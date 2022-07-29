@@ -1,0 +1,139 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 850px;
+    align-items: center;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 84px;
+    width: 406px;
+}
+
+.title.light span:nth-child(1) {
+    color: #0F73EF;
+}
+
+.title span:nth-child(1) {
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    white-space: nowrap;
+    animation: typing 2.5s steps(40, end), blink-caret .5s step-end 6;
+    animation-fill-mode: forwards;
+}
+
+.title span:nth-child(2) {
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    white-space: nowrap;
+    animation: typing 2.5s steps(40, end) 2.5s, blink-caret .5s step-end 2.5s 6;
+    animation-fill-mode: forwards;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 404px;
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: rgb(189, 189, 189);
+    }
+}
+
+.title span:nth-child(1) {
+    background-image: linear-gradient(to right top, #05F0FD 29%, #025CF1 71%);
+    background-clip: text;
+    color: transparent;
+}
+
+@media (max-width: 1279px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .title {
+        margin-bottom: 75px;
+        width: 722px;
+        width: 0;
+        overflow: hidden;
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        animation: typing 2.5s steps(40, end), blink-caret .5s step-end 6;
+        animation-fill-mode: forwards;
+    }
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 722px;
+        }
+    }
+    .title span:nth-child(1),
+    .title span:nth-child(2) {
+        display: inline;
+        animation: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .title {
+        font-size: 63px;
+        line-height: 98px;
+        margin-bottom: 75px;
+        width: 0;
+        overflow: hidden;
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        animation: typing 2.5s steps(40, end), blink-caret .5s step-end 6;
+        animation-fill-mode: forwards;
+    }
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 570px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .title {
+        font-size: 30px;
+        line-height: 38px;
+        margin-bottom: 38px;
+        width: 0;
+        overflow: hidden;
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        animation: typing 2.5s steps(40, end), blink-caret .5s step-end 6;
+        animation-fill-mode: forwards;
+    }
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 270px;
+        }
+    }
+    .wrapper {
+        margin: 0 18px;
+    }
+}

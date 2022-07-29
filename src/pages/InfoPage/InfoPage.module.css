@@ -1,0 +1,144 @@
+.content {
+    max-width: 1220px;
+    margin: 126px auto 126px auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.scrollToHeader.show {
+    display: block;
+}
+
+.scrollToHeader.hide {
+    display: none;
+}
+
+.scrollToHeader {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    cursor: pointer;
+    user-select: none;
+    background: none;
+    outline: none;
+    border-style: none;
+    z-index: 2;
+}
+
+.scrollToHeader:hover svg:nth-child(2) rect {
+    fill: #025CF1;
+    transition: all 0.1s ease-in-out;
+}
+
+.scrollToHeader:hover svg:nth-child(3) rect {
+    fill: #05F0FD;
+    transition: all 0.1s ease-in-out;
+}
+
+
+/*  */
+
+.scrollContainer {
+    width: 70px;
+    height: 70px;
+    position: relative;
+}
+.scrollContainer.light .scroll:nth-child(1)  circle:nth-child(1){
+    fill: none;
+}
+.scrollContainer.light .scroll:nth-child(1) circle:nth-child(2) {
+    stroke: #0F73EF;
+}
+
+.scrollContainer.light .scroll:nth-child(2) rect{
+    fill: #0F73EF;
+}
+.scrollContainer.light .scroll:nth-child(3) rect{
+    fill: #F2BF66;
+}
+.scroll:nth-child(1) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.scroll:nth-child(2) {
+    position: absolute;
+    left: 50%;
+    top: 19px;
+    transform: translate(-50%, 0);
+    animation: topArrow 1s ease-in-out infinite alternate-reverse;
+}
+
+.scroll:nth-child(3) {
+    position: absolute;
+    left: 50%;
+    top: 43px;
+    transform: translate(-50%, 0);
+    animation: bottomArrow 1s ease-in-out 0.2s infinite alternate-reverse;
+}
+
+@keyframes topArrow {
+    from {
+        top: 19px;
+    }
+    to {
+        top: 12px;
+    }
+}
+
+@keyframes bottomArrow {
+    from {
+        top: 43px;
+    }
+    to {
+        top: 36px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .content {
+        margin: 146px 54px;
+    }
+    .scrollToHeader {
+        right: 20px;
+        bottom: 20px;
+        transform: scale(0.8);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .content {
+        margin: 126px 54px;
+    }
+    .scrollToHeader {
+        right: 20px;
+        bottom: 20px;
+        transform: scale(0.7);
+    }
+}
+
+@media (max-width: 767px) {
+    .content {
+        margin: 36px 0;
+    }
+    .scrollToHeader {
+        right: 10px;
+        bottom: 10px;
+        transform: scale(0.6);
+    }
+}
+
+@media (max-width: 320px) {
+    .content {
+        margin: 36px 0 30px 0;
+    }
+    .scrollToHeader {
+        right: 0;
+        bottom: 0;
+        transform: scale(0.5);
+    }
+}

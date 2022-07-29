@@ -1,0 +1,576 @@
+.background {
+    width: 853px;
+    height: 802px;
+    position: absolute;
+    right: -300px;
+    top: -150px;
+    background-image: url("../../../assets/illustration/background.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.illustration {
+    width: 758px;
+    height: 463px;
+    position: absolute;
+    right: 10px;
+    top: 150px;
+    background-image: url("../../../assets/illustration/Illustration.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* LOCK */
+
+.lockContainer {
+    position: absolute;
+    top: 0;
+    right: 265px;
+    width: 127px;
+    height: 78px;
+}
+
+.lockBody {
+    position: absolute;
+    z-index: 1;
+}
+
+.lockHook {
+    position: absolute;
+    z-index: 0;
+    animation: unlockHook 1s linear 3s 1 forwards;
+}
+
+@keyframes unlockHook {
+    0% {
+        top: 0;
+        right: 0;
+    }
+    65% {
+        top: -6.5px;
+        right: -6.5px;
+    }
+    100% {
+        transform: skewY(-4deg) rotateX(30deg) scaleX(1.1);
+        top: -6.5px;
+        right: -6.5px;
+    }
+}
+
+.lockPassword {
+    position: absolute;
+    z-index: 2;
+    top: 27px;
+    left: 42px;
+}
+
+.lockPassword path:nth-child(1) {
+    animation: firstDot 1s linear 0.1s 1 forwards;
+}
+
+@keyframes firstDot {
+    0% {
+        fill: #5793CE;
+    }
+    40% {
+        fill: rgb(243, 94, 116);
+    }
+    80% {
+        fill: rgb(136, 1, 255);
+    }
+    100% {
+        fill: rgb(124, 243, 94);
+    }
+}
+
+.lockPassword path:nth-child(2) {
+    animation: secondDot 2s linear 0.2s 1 forwards;
+}
+
+@keyframes secondDot {
+    0% {
+        fill: url(#paint0_linear_2_3381);
+    }
+    20% {
+        fill: rgb(243, 94, 116);
+    }
+    30% {
+        fill: rgb(136, 1, 255);
+    }
+    100% {
+        fill: rgb(124, 243, 94);
+    }
+}
+
+.lockPassword path:nth-child(3) {
+    animation: thirdDot 3s linear 0.3s 1 forwards;
+}
+
+@keyframes thirdDot {
+    0% {
+        fill: url(#paint1_linear_2_3381);
+    }
+    10% {
+        fill: rgb(136, 1, 255);
+    }
+    60% {
+        fill: rgb(243, 94, 116);
+    }
+    100% {
+        fill: rgb(124, 243, 94);
+    }
+}
+
+
+/*FOLDER*/
+
+.sheet {
+    position: absolute;
+}
+
+.textSmall,
+.textSmallSecond {
+    position: absolute;
+    width: 0;
+    transform: rotate(30deg) skewX(30deg);
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.1px solid transparent;
+    color: transparent;
+}
+
+.textSmall span,
+.textSmallSecond span {
+    text-decoration: line-through black wavy;
+    -webkit-text-decoration: line-through black wavy;
+}
+
+.textSmall {
+    top: 29px;
+    left: 6px;
+    font-size: 10px;
+    animation: printedSmallText 2.5s steps(40, end), flashinBorder .75s step-end 4;
+    animation-delay: 7s;
+    animation-fill-mode: forwards;
+}
+
+.textSmallSecond {
+    top: 38px;
+    left: 6px;
+    font-size: 10px;
+    animation: printedSmallText 2.5s steps(40, end), flashinBorder .75s step-end 4;
+    animation-delay: 9.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes flashinBorder {
+    from,
+    to {
+        border-color: transparent
+    }
+    50% {
+        border-color: rgb(43, 255, 0);
+    }
+}
+
+@keyframes printedSmallText {
+    to {
+        width: 55px;
+    }
+}
+
+@keyframes printedBigText {
+    to {
+        width: 80px;
+    }
+}
+
+.folderContainer.small {
+    position: absolute;
+    left: 210px;
+    top: 50px;
+}
+
+.folderContainer.big {
+    position: absolute;
+    top: 325px;
+    left: 110px;
+}
+
+.folderContainer {
+    width: 68px;
+    height: 90px;
+}
+
+.folderBack {
+    position: absolute;
+    z-index: 0;
+}
+
+.folderSheet {
+    position: absolute;
+    z-index: 1;
+}
+
+.folderSheetBig {
+    animation: sheetFly 1.5s linear 14s 1 forwards;
+}
+
+@keyframes sheetFly {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    100% {
+        top: -100px;
+        left: 150px;
+    }
+}
+
+.folderSheetBig path {
+    animation: sheetOpacity 1.5s linear 14s 1 forwards;
+}
+
+@keyframes sheetOpacity {
+    0% {
+        fill-opacity: 0.66;
+    }
+    50% {
+        fill: rgb(124, 243, 94);
+    }
+    100% {
+        fill-opacity: 0;
+    }
+}
+
+.folderFront {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+}
+
+.folderFrontBig {
+    animation: openBigFolder 1.5s linear 12.5s 1 forwards, closeBigFolder 1.5s linear 15.5s 1 forwards;
+}
+
+@keyframes openBigFolder {
+    0% {
+        left: 0;
+        top: 0;
+    }
+    100% {
+        transform: skew(30deg, 15deg) scale(0.77, 0.62);
+        left: -12.5px;
+        top: 14px;
+    }
+}
+
+@keyframes closeBigFolder {
+    0% {
+        transform: skew(30deg, 15deg) scale(0.77, 0.62);
+        left: -12.5px;
+        top: 14px;
+    }
+    100% {
+        transform: none;
+        left: 0;
+        top: 0;
+    }
+}
+
+.folderFrontSmall {
+    animation: openSmallFolder 1.5s linear 5.5s 1 forwards;
+}
+
+@keyframes openSmallFolder {
+    0% {
+        left: 0;
+        top: 0;
+    }
+    100% {
+        transform: skew(30deg, 15deg) scale(0.8, 0.6);
+        left: -9.5px;
+        top: 11px;
+    }
+}
+
+.folderFront path:nth-child(2),
+.folderFront path:nth-child(3),
+.folderFront path:nth-child(4),
+.folderFront path:nth-child(5) {
+    animation: fillGhost 0.5s linear 1 forwards;
+}
+
+.folderFrontSmall path:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.folderFrontSmall path:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.folderFrontSmall path:nth-child(4) {
+    animation-delay: 3.5s;
+}
+
+.folderFrontSmall path:nth-child(5) {
+    animation-delay: 4.5s;
+}
+
+.folderFrontBig path:nth-child(2) {
+    animation-delay: 12s;
+}
+
+.folderFrontBig path:nth-child(3) {
+    animation-delay: 11s;
+}
+
+.folderFrontBig path:nth-child(4) {
+    animation-delay: 10.5s;
+}
+
+.folderFrontBig path:nth-child(5) {
+    animation-delay: 11.5s;
+}
+
+@keyframes fillGhost {
+    0% {
+        fill: white;
+    }
+    100% {
+        fill: rgb(124, 243, 94);
+    }
+}
+
+
+/* CLOUD */
+
+.cloudContainer {
+    width: 125px;
+    height: 150px;
+    transform: rotate(120deg);
+    overflow: hidden;
+    position: absolute;
+    z-index: 0;
+    left: 70px;
+    top: 70px;
+}
+
+.cloud {
+    transform: rotate(-120deg);
+    position: absolute;
+    left: 4px;
+    z-index: 1;
+    animation: cloudAnimation 2s ease-in-out 10s 1 forwards;
+}
+
+@keyframes cloudAnimation {
+    to {
+        left: 25px;
+    }
+}
+
+.cloud linearGradient stop {
+    animation: cloudArrowAnimation 2s ease-in-out 10s 1 forwards;
+}
+
+@keyframes cloudArrowAnimation {
+    to {
+        stop-color: rgb(124, 243, 94);
+    }
+}
+
+
+/* SHIELD */
+
+.shieldContainer {
+    width: 171px;
+    height: 235px;
+    position: relative;
+    z-index: 100;
+    top: 100px;
+    left: 300px;
+}
+
+.shieldAndLock {
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    left: 30px;
+}
+
+.shield {
+    position: absolute;
+    animation: rotateShield 5s ease-in-out 17s infinite;
+}
+
+@keyframes rotateShield {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(30deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+.lock {
+    animation: lockDisappear 2.5s ease-in-out 15s 1 forwards;
+}
+
+@keyframes lockDisappear {
+    to {
+        opacity: 0;
+    }
+}
+
+.shieldContainerFront {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.shieldContainerBack {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.shield linearGradient stop:nth-child(2) {
+    animation: changeShieldColor 2.5s ease-in-out 17s 1, splashShieldColor 4s ease-in-out 19.5s infinite;
+}
+
+@keyframes changeShieldColor {
+    0% {
+        stop-color: #01B0F9;
+    }
+    100% {
+        stop-color: rgba(186, 255, 169, 0.99);
+    }
+}
+
+@keyframes splashShieldColor {
+    0% {
+        stop-color: rgb(183, 255, 165);
+    }
+    10% {
+        stop-color: rgba(172, 255, 152, 0.99);
+    }
+    20% {
+        stop-color: rgba(172, 255, 152, 0.99);
+    }
+    30% {
+        stop-color: rgba(203, 253, 190, 0.99);
+    }
+    40% {
+        stop-color: rgba(132, 252, 102, 0.99);
+    }
+    50% {
+        stop-color: rgba(203, 254, 190, 0.99);
+    }
+    60% {
+        stop-color: rgba(130, 250, 99, 0.99);
+    }
+    70% {
+        stop-color: rgba(186, 252, 169, 0.99);
+    }
+    80% {
+        stop-color: rgba(117, 250, 83, 0.99);
+    }
+    90% {
+        stop-color: rgba(172, 255, 152, 0.99);
+    }
+    100% {
+        stop-color: rgba(186, 255, 169, 0.99);
+    }
+}
+
+.shield path:last-child {
+    animation: shieldBorder 1s ease-in-out 19s 1 forwards;
+}
+
+@keyframes shieldBorder {
+    to {
+        fill: white
+    }
+}
+
+.folderGreenBig {
+    position: absolute;
+    right: 50px;
+    top: 80px;
+}
+
+.folderGreenSmall {
+    position: absolute;
+    bottom: 20px;
+    right: 41px;
+}
+
+@media (max-width: 1279px) {
+    .background {
+        right: -420px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .shield {
+        animation: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .background {
+        right: -440px;
+    }
+    .illustration {
+        left: 30px;
+    }
+}
+
+@media(max-width: 991px) {
+    .background {
+        position: relative;
+        top: -170px;
+        transform: scale(0.9);
+        left: -100px;
+        margin: 0 auto;
+        right: auto;
+    }
+}
+
+@media(max-width: 767px) {
+    .background {
+        transform: scale(0.6);
+        top: -180px;
+        margin: 0 auto;
+        right: auto;
+        left: -190px;
+    }
+}
+
+@media(max-width: 500px) {
+    .background {
+        transform: scale(0.5);
+        top: -200px;
+        margin: 0 auto;
+        right: auto;
+        left: -230px;
+    }
+}
+
+@media(max-width: 400px) {
+    .background {
+        transform: scale(0.4);
+        top: -220px;
+        margin: 0 auto;
+        right: auto;
+        left: -290px;
+    }
+}

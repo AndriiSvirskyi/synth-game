@@ -1,0 +1,222 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.inputWrapper {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  background-color: #1a1922;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.inputWrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  border-top: 22px solid transparent;
+  border-left: 22px solid #12101a;
+  border-bottom: 0 solid transparent;
+}
+.inputWrapper .input:focus {
+  background: linear-gradient(45deg, #06f0fe 15px, #1a1922 0) bottom left;
+}
+
+.inputWrapper.light {
+  background-color: #FFFFFF;
+
+  &::after {
+    border-left: 22px solid #F2F4F8;
+  }
+
+  & input {
+    color: #4B576C;
+  }
+
+  & input::placeholder {
+    color: #7E8A9F;
+  }
+
+  &.wrapperFocus-error .input:focus {
+    background: linear-gradient(45deg, #FF4A4AF0 15px, #FFF7F7 0) bottom left;
+  }
+
+  & .input-error {
+    background: linear-gradient(-135deg, #FFF7F7 15px, #FFF7F7 0) top right,
+      linear-gradient(45deg, transparent 15px, #FFF7F7 0) bottom left;
+    border-right: 0;
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    color: #FF4A4AF0;
+    &::placeholder {
+      color: #FF4A4AF0;
+    }
+  }
+
+  & .errorMessage {
+    color: #FF4A4A;
+  }
+}
+
+.wrapperFocus-loading,
+.wrapperFocus-success,
+.wrapperFocus-primary,
+.wrapperFocus-check {
+  &.light {
+    & .input:focus {
+      background: linear-gradient(45deg, #0F73EF 15px, rgb(255, 255, 255) 0) bottom left;
+      border: 1px solid #0F73EF;
+      border-right: 0;
+    }
+  }
+}
+
+.wrapperFocus-loading,
+.wrapperFocus-success,
+.wrapperFocus-primary,
+.wrapperFocus-check {
+  & .input:focus {
+    border: 1px solid #06f0fe;
+    border-right: 0;
+  }
+}
+
+.wrapperFocus-error .input:focus {
+  border: 1px solid #ed1d2d;
+  border-right: 0;
+}
+
+.inputWrapper.wrapperFocus-error .input:focus {
+  background: linear-gradient(45deg, #ed1d2d 15px, #1a1922 0) bottom left;
+  color: #B70A0AF0;
+}
+
+.input:focus .inputWrapper .input:focus {
+  background: linear-gradient(45deg, #06f0fe 15px, #1a1922 0) bottom left;
+}
+
+.wrapper-error {
+  background: linear-gradient(-135deg, transparent 15px, #ed1d2d 0) top right,
+    linear-gradient(45deg, transparent 15px, #ed1d2d 0) bottom left;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+}
+
+.wrapper-warning {
+  background: linear-gradient(-135deg, transparent 15px, #f29206 0) top right,
+    linear-gradient(45deg, transparent 15px, #f29206 0) bottom left;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+}
+
+.input {
+  width: 100%;
+  height: 64px;
+  font-size: 16px;
+  color: #d5d5d5;
+  background: transparent;
+  border: 1px solid transparent;
+  outline: none;
+  box-sizing: border-box;
+  padding: 0 30px 0 20px;
+  font-family: 'Roboto', sans-serif;
+  text-overflow: ellipsis;
+}
+
+.input::placeholder {
+  color: #d5d5d5;
+}
+
+.input-error {
+  background: linear-gradient(-135deg, #590209 15px, #590209 0) top right,
+    linear-gradient(45deg, transparent 15px, #590209 0) bottom left;
+  border-right: 0;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+
+}
+
+.input-warning {
+  background: linear-gradient(-135deg, transparent 15px, #472c04 0) top right,
+    linear-gradient(45deg, transparent 15px, #472c04 0) bottom left;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -25px;
+  font-size: 12px;
+  color: #ff4a4a;
+}
+
+@media (max-width: 930px) {
+  .input {
+    padding: 0 32px 0 20px;
+  }
+
+  .inputWrapper.wrapperFocus-primary,
+  .inputWrapper.wrapperFocus-success,
+  .inputWrapper.wrapperFocus-loading,
+  .inputWrapper.wrapperFocus-check {
+    &.light {
+      & .input:focus {
+        background: linear-gradient(45deg, #0F73EF 15px, transparent 0) bottom left,
+          linear-gradient(-135deg, #0F73EF 15px, transparent 0) top right;
+        border: 1px solid #0F73EF;
+      }
+    }
+  }
+
+  .inputWrapper.wrapperFocus-error {
+    &.light {
+      & .input {
+        background: linear-gradient(45deg, #FF4A4AF0 15px, transparent 0) bottom left, linear-gradient(-135deg, #FF4A4AF0 15px, #FFF7F7 0) top right;
+        border: 1px solid #FF4A4AF0;
+
+        &:focus {
+          background: linear-gradient(45deg, #FF4A4AF0 15px, transparent 0) bottom left, linear-gradient(-135deg, #FF4A4AF0 15px, #FFF7F7 0) top right;
+        }
+      }
+
+    }
+  }
+
+  .wrapperFocus-primary,
+  .wrapperFocus-success,
+  .wrapperFocus-loading,
+  .wrapperFocus-check {
+    & .input:focus {
+      background: linear-gradient(45deg, #06f0fe 15px, transparent 0) bottom left, linear-gradient(-135deg, #06f0fe 15px, transparent 0) top right;
+
+      border: 1px solid #06f0fe;
+    }
+  }
+
+
+  .wrapperFocus-error .input:focus {
+    background: linear-gradient(45deg, #ed1d2d 15px, transparent 0) bottom left,
+    linear-gradient(-135deg, #ed1d2d 15px, #280505 0) top right;
+    border: 1px solid #ed1d2d;
+  }
+
+  .inputWrapper.wrapperFocus-error .input:focus {
+    background: linear-gradient(45deg, #ed1d2d 15px, transparent 0) bottom left,
+      linear-gradient(-135deg, #ed1d2d 15px, #280505 0) top right;
+  }
+
+  .errorMessage {
+    bottom: -15px;
+    left: 30px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .input.footer {
+    height: 64px;
+  }
+}

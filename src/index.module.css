@@ -1,0 +1,15 @@
+/* .global {
+    margin: 0;
+    box-sizing: border-box;
+    color: #ffffff;
+    background: #12101A;
+}
+.global.light{
+    color: #202124;
+    background: linear-gradient(123.43deg, #F2F4F8 0.55%, #FFFFFF 100%);
+} */
+* {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}

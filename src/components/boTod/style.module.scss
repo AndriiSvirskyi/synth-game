@@ -1,0 +1,83 @@
+.boTod {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 400px;
+  height: 400px;
+
+  &.fixed {
+    position: fixed;
+    bottom: -100px;
+    left: calc(50% - 200px);
+    z-index: 100;
+    transform: scale(0.3);
+
+    &.moving {
+      animation-duration: 0.5s;
+      animation-name: moving;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-delay: 0.9s;
+    }
+  }
+}
+
+.cubes {
+  position: relative;
+  width: 1px;
+  height: 1px;
+}
+
+.portal {
+  position: absolute;
+  right: -60px;
+  border-radius: 50%;
+  background: #060605;
+  border: 2px solid #2f3fd3;
+  animation-name: portal;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moving {
+  0% {
+    bottom: -100px;
+  }
+
+  100% {
+    bottom: calc(100vh - 100px);
+  }
+}
+@keyframes portal {
+  0% {
+    width: 0px;
+    height: 0%;
+  }
+  20%,
+  90% {
+    height: 100%;
+    width: 50px;
+    border: 2px solid #2f3fd3;
+  }
+  100% {
+    width: 0;
+    height: 0;
+    border: 0;
+  }
+}
+
+@media (max-width: 1280px) {
+  .boTod {
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 320px) {
+  .boTod {
+    transform: scale(0.5);
+  }
+}

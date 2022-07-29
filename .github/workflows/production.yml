@@ -1,0 +1,72 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy AWS DEVELOPMENT server
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+#  pull_request:
+#    branches: [ development ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Building PROD Frontend...
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing git pull on server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_PROD }}
+        username: ec2-user
+        key: ${{ secrets.KEY_ED25519_PROD }}
+        port: 22
+        script: |
+           cd /home/ec2-user/frontend/ghost-node-front/
+           git fetch --all
+           git reset --hard origin/main
+           aws ssm get-parameter --name /ghostnode/prod/frontend \
+               --with-decryption \
+               --query Parameter.Value \
+               --output text > .env
+
+    - name: executing npm install to prepare image
+      uses: appleboy/ssh-action@master
+      with:
+        node-version: '16.14-slim'
+        host: ${{ secrets.HOST_PROD }}
+        username: ec2-user
+        key: ${{ secrets.KEY_ED25519_PROD }}
+        port: 22
+        script: |
+           cd /home/ec2-user/frontend/ghost-node-front/
+           docker run --rm --tty --volume $PWD:/app -w /app node:16.10-slim npm i
+    - name: building container...
+      uses: appleboy/ssh-action@master
+      with:
+        node-version: '16.10-slim'
+        host: ${{ secrets.HOST_PROD }}
+        username: ec2-user
+        key: ${{ secrets.KEY_ED25519_PROD }}
+        port: 22
+        command_timeout: 30m
+        script: |
+           cd /home/ec2-user/frontend/ghost-node-front/
+           docker build -t "ghost-node-front" .
+    - name: starting container...
+      uses: appleboy/ssh-action@master
+      with:
+        node-version: '16.14-slim'
+        host: ${{ secrets.HOST_PROD }}
+        username: ec2-user
+        key: ${{ secrets.KEY_ED25519_PROD }}
+        port: 22
+        script: |
+           cd /home/ec2-user/frontend/ghost-node-front/
+           docker stop ghost-node-frontend 2> /dev/null
+           docker system prune -f
+           docker run -d -p3000:80 --name ghost-node-frontend -it ghost-node-front

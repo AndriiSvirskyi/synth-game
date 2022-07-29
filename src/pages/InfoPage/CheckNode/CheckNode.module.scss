@@ -1,0 +1,248 @@
+.gridWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 680px;
+    align-self: center;
+    justify-content: space-between;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: 800px 1fr;
+    grid-auto-rows: 700px;
+    align-self: center;
+}
+
+.gridWrapper.light{
+    & .spanOne,
+    & .spanTwo {
+        color: #0F73EF;
+    }
+}
+
+.checkBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+}
+
+.inputContainer {
+    display: grid;
+    grid-template-columns: 1fr 178px;
+    align-items: center;
+    width: 620px
+}
+
+.titleOne {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 84px;
+    white-space: pre-line;
+}
+
+.titleTwo {
+    font-size: 63px;
+}
+
+.spanOne {
+    background-image: linear-gradient(to right top, #05F0FD 75%, #025CF1);
+    background-clip: text;
+    color: transparent;
+}
+
+.spanTwo {
+    background-image: linear-gradient(to right top, #025CF1, #05F0FD);
+    background-clip: text;
+    color: transparent;
+}
+
+.backgroundLines {
+    position: absolute;
+    left: 0;
+    bottom: 300px;
+    width: 68px;
+    height: 0;
+    background-size: cover;
+    background-image: url("../../../assets/img/checkBackgroundLines.svg");
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.backgroundLines.show {
+    animation: showLines 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes showLines {
+    to {
+        height: 332px;
+        bottom: 0;
+    }
+}
+
+.imageBlock {
+    position: relative;
+    width: 100%;
+}
+
+.boxesImage {
+    position: absolute;
+    width: 100%;
+    height: 820px;
+    background-image: url("../../../assets/img/boxes.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.backgroundEllipse {
+    position: absolute;
+    right: 10%;
+    top: -65px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: url("../../../assets/img/backgroundCheck.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(40px);
+}
+
+@media (max-width: 1279px) {
+    .imageBlock,
+    .backgroundLines {
+        display: none;
+    }
+    .gridWrapper {
+        grid-template-columns: auto;
+        margin: 0 auto;
+        grid-auto-rows: 300px 480px;
+        justify-content: center;
+    }
+    .titleOne,
+    .titleTwo {
+        text-align: center;
+    }
+    .inputContainer {
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .titleOne {
+        font-size: 63px;
+        line-height: 79px;
+        letter-spacing: 0.02em;
+    }
+    .titleTwo {
+        font-size: 50px;
+        line-height: 63px;
+        letter-spacing: 0.02em;
+    }
+}
+
+@media (max-width: 767px) {
+    .titleOne {
+        font-size: 38px;
+        line-height: 48px;
+        letter-spacing: 0.02em;
+    }
+    .titleTwo {
+        font-size: 30px;
+        line-height: 38px;
+        letter-spacing: 0.02em;
+    }
+    .gridWrapper {
+        margin: 0 24px;
+        grid-auto-rows: 300px 500px;
+    }
+    .inputContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .inputContainer>input {
+        padding-right: 20px;
+    }
+    .inputContainer>div:first-child {
+        width: 100%;
+        border: none;
+        background: #252525;
+    }
+    .inputContainer>div:first-child::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-bottom: 22px solid transparent;
+        border-right: 22px solid #12101A;
+        border-top: 0 solid transparent;
+    }
+    .gridWrapper.light {
+        & .inputContainer>div:first-child {
+            background: #FFFFFF;
+        }
+        & .inputContainer>div:first-child::before {
+            border-right: 22px solid #F2F4F8;
+        }
+    }
+    .inputContainer>div:first-child {
+        width: 100%;
+        height: 100%;
+        background-image: url("../../../assets/img/backgroundCheck.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 0 24px 0;
+    }
+    .traffic {
+        height: 0;
+        overflow: hidden;
+    }
+    .traffic.show {
+        animation: showTraffic 1.5s ease-out 0.4s 1 forwards;
+    }
+    @keyframes showTraffic {
+        to {
+            height: 100%;
+        }
+    }
+}
+
+@media (max-width: 580px) {
+    .gridWrapper {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 440px) {
+    .inputContainer {
+        width: 300px
+    }
+    .titleOne {
+        font-size: 30px;
+        margin: 0;
+        padding: 0;
+    }
+    .titleTwo {
+        font-size: 24px;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (max-width: 320px) {
+    .inputContainer {
+        width: 284px
+    }
+    .gridWrapper {
+        grid-auto-rows: 200px 380px;
+        margin: 0 18px;
+    }
+    .titleOne {
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .titleTwo {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}

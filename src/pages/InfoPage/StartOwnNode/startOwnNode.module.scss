@@ -1,0 +1,187 @@
+.wrapper {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 651px 1fr;
+  grid-auto-rows: 700px;
+  position: relative;
+}
+.wrapper.light {
+  & .spanOne,
+  .spanTwo {
+    color: #0f73ef;
+  }
+  & .backgroundStartEllipse {
+    filter: blur(400px);
+  }
+}
+.textBlockWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 84px;
+  white-space: pre-line;
+  z-index: 1;
+}
+
+.titleTwo {
+  font-size: 64px;
+}
+
+.spanOne {
+  color: #05f0fd;
+}
+
+.spanTwo {
+  background-image: linear-gradient(to right top, #025cf1, #05f0fd);
+  background-clip: text;
+  color: transparent;
+}
+
+.subTitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  white-space: pre-line;
+}
+
+.imageBlock {
+  width: 650px;
+  height: 800px;
+  position: absolute;
+  right: -100px;
+  top: -150px;
+  background-image: url('../../../assets/img/startOwnNode.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.backgroundStartEllipse {
+  position: absolute;
+  left: -309px;
+  top: -43px;
+  width: 493px;
+  height: 462px;
+  border-radius: 50%;
+  background-image: url('../../../assets/img/backgroundCheck.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(40px);
+}
+
+.startNodeButton {
+  cursor: pointer;
+  position: relative;
+  width: 330px;
+  height: 65px;
+  font-weight: 600;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.startNodeButton svg,
+.startNodeButton div {
+  position: absolute;
+}
+
+.startNodeButton div {
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.startNodeButton.light div {
+  color: #0f73ef;
+}
+.hovered {
+  display: block;
+}
+.startNodeButton:hover div {
+  color: white;
+}
+.startNodeButton:hover .hovered {
+  display: block;
+}
+
+@media (min-width: 992px) and (max-width: 1080px) {
+  .title {
+    font-size: 63px;
+    width: 520px;
+  }
+  .titleTwo {
+    font-size: 43px;
+  }
+  .subTitle {
+    width: 520px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .title {
+    font-weight: 700;
+    font-size: 80px;
+    width: 581px;
+  }
+  .titleTwo {
+    font-size: 58px;
+  }
+  .wrapper {
+    grid-template-columns: 400px;
+    grid-auto-rows: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    grid-template-columns: 400px;
+    grid-auto-rows: 460px;
+    margin: 0 24px;
+  }
+  .title {
+    font-size: 53px;
+    line-height: 104.7%;
+  }
+  .subTitle {
+    font-size: 14px;
+    line-height: 140%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrapper {
+    grid-template-columns: 290px;
+    margin: 0 10px;
+    grid-auto-rows: 320px;
+  }
+  .title {
+    font-size: 34px;
+    line-height: 104.7%;
+  }
+  .titleTwo {
+    font-size: 24px;
+    line-height: 25px;
+  }
+  .subTitle {
+    font-size: 14px;
+    line-height: 140%;
+  }
+  .startNodeButton,
+  .startNodeButton svg {
+    width: 281px;
+  }
+  .startNodeButton div {
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+}
