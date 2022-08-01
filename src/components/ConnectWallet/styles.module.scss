@@ -1,0 +1,227 @@
+.metamaskData {
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #020202;
+  line-height: 20px;
+  position: absolute;
+  right: 211px;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 10px;
+
+  & .data {
+    margin: 0 0 32px 0;
+
+    &:nth-child(1) {
+      color: lightgray;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      & span:nth-child(2) {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          height: 36px;
+          width: 8px;
+          border: 0.5px solid #000000;
+          border-left: 0;
+          right: 0;
+          top: -8px;
+        }
+      }
+    }
+
+    & .label {
+      width: 105px;
+      display: inline-block;
+      margin: 0 32px 0 0;
+    }
+
+    & .value {
+      width: 135px;
+      text-align: center;
+      display: inline-block;
+    }
+
+  }
+
+  & .confirmButton {
+    height: 40px;
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.leftBracket {
+  display: block;
+  position: absolute;
+  height: 36px;
+  width: 8px;
+  border: 0.5px solid #000000;
+  border-right: 0;
+  left: 0;
+  top: -8px;
+}
+
+.leftBracket:before {
+  content: "";
+  position: absolute;
+  width: 5.9px;
+  height: 5.8px;
+  background: white;
+  transform: rotate(45deg);
+  border-right: 0.5px solid #000000;
+  left: -3.5px;
+  top: -3.3px;
+}
+
+.close {
+  position: absolute;
+  top: 110px;
+  right: 154px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.hexa {
+  position: absolute;
+  top: 220px;
+  animation: HexaToLeft 1.5s ease-in-out 1 forwards;
+}
+
+
+@keyframes HexaToLeft {
+  0% {
+    left: 1000px;
+    transform: scale(1);
+  }
+
+  100% {
+    left: 80px;
+    transform: scale(0.6);
+  }
+}
+
+.hexa.transformHexa {
+  left: 80px;
+  animation: scaleHexa 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes scaleHexa {
+  0% {
+    transform: scale(0.6);
+  }
+
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+.hexa.hexaToRight {
+  right: 65%;
+  animation: HexaToRight 0.7s ease-in-out 1 forwards;
+}
+
+@keyframes HexaToRight {
+  0% {
+    left: 80px;
+    transform: scale(0.7);
+  }
+
+  100% {
+    left: 1000px;
+    transform: scale(1);
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: absolute;
+  left: 1200px;
+  top: 70px;
+  width: 190px;
+  overflow: hidden;
+  animation: displayArrow 1.5s ease-in-out 1 forwards;
+}
+
+.error {
+  font-size: 12px;
+  color: rgba(255, 111, 0, 0.777);
+  position: absolute;
+  top: 50%;
+  left: 780px;
+  & a {
+    color: rgba(255, 111, 0, 0.777);
+  }
+}
+
+.arrow {
+  margin: 0 174px 0 0;
+}
+
+@keyframes displayArrow {
+  0% {
+    width: 190px;
+  }
+
+  100% {
+    width: 530px;
+  }
+}
+
+.metamaskLogo {
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  animation: displayFox 1s ease-in-out 0.5s 1 forwards;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@keyframes displayFox {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  75% {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.metamaskWrapper.hide {
+  opacity: 1;
+  animation: hideData 0.5s ease-in-out 1 forwards;
+}
+
+
+@keyframes hideData {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

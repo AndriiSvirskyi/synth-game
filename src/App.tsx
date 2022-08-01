@@ -6,6 +6,7 @@ import { SynthGameInfo } from 'components/SynthGameInfo';
 import { Header } from 'components/Header';
 import { FirstBlock } from 'components/FirstBlock';
 import { SecondBlock } from 'components/SecondBlock';
+import { ConnectWallet } from 'components/ConnectWallet';
 
 export enum Scenes {
   connectWallet,
@@ -21,13 +22,15 @@ const App = () => {
     cur: Scenes.mainPage,
     past: Scenes.mainPage,
   });
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
 
   return (
     <div className={`${appStyles.app} ${isLight ? appStyles.light : ''}`}>
-      <Header scene={scene} setScene={setScene} />
+      <Header scene={scene} setScene={setScene} isWalletConnected={isWalletConnected}/>
       <SynthGameInfo scene={scene} setScene={setScene} />
       <FirstBlock scene={scene} setScene={setScene} />
       <SecondBlock scene={scene} setScene={setScene} />
+      <ConnectWallet scene={scene} setScene={setScene} isWalletConnected={isWalletConnected} setIsWalletConnected={setIsWalletConnected}/>
     </div>
   );
 };
