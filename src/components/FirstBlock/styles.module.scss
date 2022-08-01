@@ -1,0 +1,155 @@
+.first {
+  position: absolute;
+  top: 300px;
+  left: 150px;
+  .textBlock {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+  .text {
+    line-height: 22px;
+  }
+
+  &.disappear {
+    animation-name: disappear;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+
+    .textBlock {
+      animation-name: textBlockDisappear;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+    }
+    .text {
+      animation-name: textDisappear;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+    }
+  }
+  &.appear {
+    animation-name: appear;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+
+    .textBlock {
+      animation-name: textBlockAppear;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+    }
+    .text {
+      animation-name: textAppear;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+    }
+  }
+}
+@keyframes disappear {
+  0% {
+    top: 300px;
+    left: 150px;
+  }
+  30%,
+  50% {
+    top: 400px;
+    left: 0px;
+  }
+  80%,
+  100% {
+    top: 400px;
+    left: -220px;
+  }
+}
+
+@keyframes textBlockDisappear {
+  0% {
+    opacity: 1;
+  }
+  30%,
+  50% {
+    opacity: 0.8;
+    right: -50px;
+    bottom: -30px;
+  }
+  80%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes textDisappear {
+  0% {
+    opacity: 1;
+  }
+  30%,
+  50% {
+    text-decoration: line-through #000 wavy;
+    color: transparent;
+    user-select: none;
+  }
+  80%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  0% {
+    top: 400px;
+    left: -220px;
+  }
+  30%,
+  50% {
+    top: 400px;
+    left: 0px;
+  }
+  80%,
+  100% {
+    top: 300px;
+    left: 150px;
+  }
+}
+
+@keyframes textBlockAppear {
+  0% {
+    opacity: 0;
+  }
+  30%,
+  50% {
+    opacity: 0.8;
+    right: -50px;
+    bottom: -30px;
+  }
+  80%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes textAppear {
+  0% {
+    opacity: 0;
+  }
+  30%,
+  50% {
+    text-decoration: line-through #000 wavy;
+    color: transparent;
+    user-select: none;
+  }
+  80%,
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,55 +1,35 @@
 import appStyles from './App.module.css';
-import Footer from './pages/Footer/Footer';
-import Header from './pages/Header/Header';
-import InfoPage from './pages/InfoPage/InfoPage';
 import { useState } from 'react';
-import { BoTod } from 'components/boTod';
-import { BoTodStore } from 'store/BoTodStore';
-import { CubeStatus } from 'components/boTod/cube.types';
-import { observer } from 'mobx-react-lite';
-import { SetupNode } from 'pages/SetupNode';
+import { Hexa } from 'components/hexa';
+import { BorderFocus } from 'components/BorderFocus';
+import { SynthGameInfo } from 'components/SynthGameInfo';
+import { Header } from 'components/Header';
+import { FirstBlock } from 'components/FirstBlock';
+import { SecondBlock } from 'components/SecondBlock';
 
-const App = observer(() => {
-  const { fixedBoTod, changeStatuses, changeFixedStatus } = BoTodStore;
+export enum Scenes {
+  connectWallet,
+  synthInfo,
+  mainPage,
+  first,
+  second,
+}
+
+const App = () => {
   const [isLight, setIsLight] = useState(false);
-  console.log('fixedBoTod', fixedBoTod);
+  const [scene, setScene] = useState({
+    cur: Scenes.mainPage,
+    past: Scenes.mainPage,
+  });
+
   return (
     <div className={`${appStyles.app} ${isLight ? appStyles.light : ''}`}>
-      <Header setIsLight={setIsLight} isLight={isLight} />
-      <InfoPage isLight={isLight} />
-      <Footer isLight={isLight} />
-      {(fixedBoTod.current === CubeStatus.appear ||
-        fixedBoTod.current === CubeStatus.grab) && (
-        <BoTod statuses={fixedBoTod} isFixed={true} />
-      )}
-      {fixedBoTod.current !== CubeStatus.appear &&
-        fixedBoTod.current !== CubeStatus.grab && (
-          <div
-            className={appStyles.button}
-            onClick={() => {
-              const staticStatuses = {
-                current: CubeStatus.disappear,
-                past: CubeStatus.waiting,
-              };
-              const fixedStatuses = {
-                current: CubeStatus.appear,
-                past: CubeStatus.waiting,
-              };
-              changeStatuses(staticStatuses, fixedStatuses);
-              setTimeout(() => {
-                changeFixedStatus({
-                  current: CubeStatus.grab,
-                  past: CubeStatus.appear,
-                });
-              }, 1700);
-            }}
-          >
-            Start Node
-          </div>
-        )}
-      {fixedBoTod.current === CubeStatus.grab && <SetupNode />}
+      <Header scene={scene} setScene={setScene} />
+      <SynthGameInfo scene={scene} setScene={setScene} />
+      <FirstBlock scene={scene} setScene={setScene} />
+      <SecondBlock scene={scene} setScene={setScene} />
     </div>
   );
-});
+};
 
 export default App;

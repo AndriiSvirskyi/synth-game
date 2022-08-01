@@ -1,0 +1,15 @@
+.hexaWrap {
+  .hexa {
+    position: relative;
+    height: 425px;
+    width: 435px;
+    background-image: url('../../assets/hexa.png');
+  }
+  &.small {
+    height: 212.5px;
+    width: 217.5px;
+    .hexa {
+      transform: scale(0.5) translate(-217px, -212px);
+    }
+  }
+}
